@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block title %} Connexion Odoo {% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    
+    <div class="p-1 m-3 bg-light">
+        <p class="float-right"><a href="{% url 'connection_config:logout' %}"><i class="fa fa-sign-out"></i>logout</a></p>
+        <h1>
+            Welcome {{ user.username }} ! <br>
+            <p>Click on "Appartments" in the menu bar to see available appartments</p>
+        </h1>
+    </div>
+    <div class="container-sm">
+    </div>
+{% else %}
+<!-- is pas loggé on demande la connexion -->
+{% include 'connection_config/_login_modal.html' %}
+
+{% endif %}
+
+
+{% endblock content %}

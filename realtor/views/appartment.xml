@@ -1,0 +1,7 @@
+<odoo>
+    <record model="ir.ui.view" id="course_form_view">
+        <field name="name">appartment.form</field>
+        <field name="model">realtor.appartment</field>
+        <field name="arch" type="xml"></field>
+    </record>
+</odoo>

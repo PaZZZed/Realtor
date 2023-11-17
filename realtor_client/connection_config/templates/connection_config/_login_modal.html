@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+
+<!-- Ajout d'un bouton pour faire apparaître la boîte de dialogue -->
+<button type="button" class="btn btn-primary">LOG-IN</button>
+
+<!-- Ajout du modal contenant le formulaire -->
+<div class="container-sm">
+    <form action="{% url 'connection_config:login' %}" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div>
+            <button class="btn btn-primary" type="submit">Connéxion</button>
+        </div>
+    </form>
+</div>

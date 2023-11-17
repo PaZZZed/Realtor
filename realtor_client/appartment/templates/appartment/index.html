@@ -1,0 +1,55 @@
+{% extends "_base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="p-1 m-3 bg-light">
+    <p class="float-right"><a href="{% url 'connection_config:logout' %}"><i class="fa fa-sign-out"></i>logout</a></p>
+    <h1>
+        Welcome {{ user.email }} ! <br>
+        <p>Here are the different Appartments and their offers</p>
+    </h1>
+    {% for appartment in appartments %}
+    <div class="card bg-info m-2 p-1 rounded-lg" style="width:300px; display: inline-block;">
+        <div class="card-title">
+            Appartment Name : {{ appartment.name }}
+        </div>
+        <div class="card-body">
+            {% load static %}
+
+            <img src="data:image/png;base64,{{ appartment.photo }}" width="200" height="100" alt="Mon image">
+
+            Descritpion of appartmentment : {{ appartment.description }} <br> <br>
+            Availability date : {{ appartment.availability }} <br> <br>
+            Expected price : {{ appartment.price }} € <br> <br>
+            Terrace surface : {{ appartment.terrace_surface }} m² <br> <br>
+            Appartment surface : {{ appartment.surface }} m² <br> <br>
+            Total surface : {{ appartment.total_surface }} m² <br> <br>
+            Best offer : {{ appartment.best_offer_amount }} $ <br> <br>
+            Best purchaser : {{ appartment.best_offer_buyer.name }}<br> <br>
+            {% for key, value in quantities.items %}
+            {% if key == appartment.id %}
+            Available quantity : {{ value }}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="card-footer">
+            {% load crispy_forms_tags %}
+            <form id="form-add-task" action="{% url 'appartment:create' appartment.id %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn btn-outline-light" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container-sm">
+</div>
+{% else %}
+<div class="container-sm p-3 mt-2 bg-light text-primary">
+    <h1>Welcome on ESI IMMO !</h1>
+    <a href="{% url 'connection_config:login' %}"">Login</a>
+</div>
+{% endif %}
+{% endblock content %}

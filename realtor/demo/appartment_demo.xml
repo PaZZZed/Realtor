@@ -1,0 +1,55 @@
+<odoo>
+	<data>
+
+		<record id="supplier" model="res.partner">
+			<field name="name">Immobilier ESI</field>
+			<field name="email">esi@he2b.be</field>
+		</record>
+
+		<record id="buyer_1" model="res.partner">
+			<field name="name">John Smith</field>
+			<field name="email">john.smith@example.com</field>
+		</record>
+
+		<record id="buyer_2" model="res.partner">
+			<field name="name">Pedro Lopez</field>
+			<field name="email">pedro.lopez@realtor.com</field>
+		</record>
+
+
+		<record id="appartment_1" model="realtor.appartment">
+			<field name="name">Appartment 1</field>
+			<field name="description">Un bel appartement au centre-ville</field>
+			<field name="availability">2023-11-13</field>
+			<field name="price">200000</field>
+			<field name="surface">100</field>
+			<field name="terrace_surface">20</field>
+			<field name="best_offer_buyer" ref="buyer_1" />
+			<field name="best_offer_amount">180000</field>
+			<field name="photo" type="base64" file="realtor/static/img/appart01.png" />
+		</record>
+
+		<record id="appartment_2" model="realtor.appartment">
+			<field name="name">Appartment 2</field>
+			<field name="description">Un appartement avec une vue imprenable sur la mer</field>
+			<field name="availability">2023-06-17</field>
+			<field name="price">300000</field>
+			<field name="surface">150</field>
+			<field name="terrace_surface">30</field>
+			<field name="photo" type="base64" file="realtor/static/img/appart02.png" />
+		</record>
+
+		<record id="appartment_3" model="realtor.appartment">
+			<field name="name">Appartment 3</field>
+			<field name="description">Un bel appartement à 3 chambres</field>
+			<field name="availability">2023-07-05</field>
+			<field name="price">195000</field>
+			<field name="surface">110</field>
+			<field name="terrace_surface">20</field>
+			<field name="best_offer_buyer" ref="buyer_2" />
+			<field name="best_offer_amount">190000</field>
+			<field name="photo" type="base64" file="realtor/static/img/appart03.png" />
+		</record>
+
+	</data>
+</odoo>
